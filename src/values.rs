@@ -652,7 +652,7 @@ impl Flags {
     pub fn new(ty: FlagsType) -> Self {
         let names = ty.names().len() as u32;
         Self {
-            flags: if names > usize::BITS {
+            flags: if names > u32::BITS {
                 FlagsList::Multiple(Arc::new(vec![0; (((names - 1) / u32::BITS) + 1) as usize]))
             } else {
                 FlagsList::Single(0)
