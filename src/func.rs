@@ -1395,7 +1395,7 @@ type FunctionBacking<T, E> =
 type FunctionBackingKeyPair<T, E> = (Arc<AtomicUsize>, Arc<FunctionBacking<T, E>>);
 
 /// A vector for functions that automatically drops items when the references are dropped.
-pub(crate) struct FuncVec<T, E: backend::WasmEngine> {
+pub(crate) struct FuncVec<T: 'static, E: backend::WasmEngine> {
     /// The functions stored in the vector.
     functions: Vec<FunctionBackingKeyPair<T, E>>,
 }
